@@ -16,6 +16,9 @@
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 name: "💻 Workstations"
 controls:
+  macos_updates:
+    deadline: "2030-04-01"
+    minimum_version: "26.0"
   enable_disk_encryption: true
   enable_recovery_lock_password: true
   ipados_updates:
@@ -77,9 +80,7 @@ controls:
   # ```  
   ###########################################################
   apple_settings:
-    macos_updates:
-      deadline: "2030-04-01"
-      minimum_version: "26.0"
+    
     configuration_profiles:
       - paths: ../platforms/macos/declaration-profiles/*.json
       - paths: ../platforms/macos/configuration-profiles/*.mobileconfig
