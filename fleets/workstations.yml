@@ -106,9 +106,9 @@ controls:
   #   • https://fleetdm.com/docs/configuration/yaml-files#windows-updates
   #   • https://fleetdm.com/guides/enforce-os-updates
   ###########################################################
-    macos_updates:
-      deadline: "2030-04-01"
-      minimum_version: "26.0"
+  macos_updates:
+    deadline: "2030-04-01"
+    minimum_version: "26.0"
   #   update_new_hosts: true
   # windows_updates:
   #   deadline_days: 7
@@ -171,6 +171,12 @@ policies:
 #   •  https://fleetdm.com/docs/configuration/yaml-files#software
 ###########################################################
 software:
+  packages:
+    - path: ../platforms/macos/software/zoom.yml
+      self_service: true
+      setup_experience: true
+      categories:
+        - Communication
   fleet_maintained_apps:
     # macOS apps
     # …
@@ -205,10 +211,12 @@ software:
   app_store_apps: # Apps to install via VPP from the macOS App Store, if any
     # …
 
+post_install_script: 
+  path: ../scripts/zoom-config.sh
+
 settings:
   webhook_settings:
     failing_policies_webhook:
       enable_failing_policies_webhook: true
       destination_url: https://webhook.site/011bbefb-c14b-4f74-9cf3-dfed8949eecc
       host_batch_size: 0
-      
